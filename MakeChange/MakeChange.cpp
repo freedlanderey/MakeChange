@@ -6,10 +6,12 @@
 
 using namespace std;
 
-double cost,
-payment,
+double payment,
 change,
-addChange;
+addChange,
+cost;
+
+int testInput;
 
 const double dollar = 1.00,
 quarter = 0.25,
@@ -21,8 +23,28 @@ int main()
 	cout << "Please enter the cost of the product: ";
 	cin >> cost;
 
+	testInput = cost * 100;
+
+	while (testInput % 5 != 0)
+	{
+		cout << "Please input number divisible by .05: ";
+		cin >> cost;
+
+		testInput = cost * 100;
+	}
+
 	cout << "Please enter the amount paid: ";
 	cin >> payment;
+
+	testInput = payment * 100;
+
+	while (testInput % 5 != 0)
+	{
+		cout << "Please input number divisible by .05: ";
+		cin >> payment;
+
+		testInput = cost * 100;
+	}
 
 	change = payment - cost;
 
