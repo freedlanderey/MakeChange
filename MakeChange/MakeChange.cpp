@@ -6,14 +6,18 @@
 
 using namespace std;
 
-double payment,
+float payment,
 change,
 addChange,
 cost;
 
-int testInput;
+int testInput,
+amtDollars,
+amtQuarters,
+amtDimes, 
+amtNickels;
 
-const double dollar = 1.00,
+const float dollar = 1.00,
 quarter = 0.25,
 dime = 0.10,
 nickel = .05;
@@ -22,19 +26,25 @@ int main()
 {
 	cout << "Please enter the cost of the product: ";
 	cin >> cost;
+	cout << endl;
 
 	testInput = cost * 100;
+
+	//Testing my testInput
+	//cout << "Test input: " << testInput << endl;
 
 	while (testInput % 5 != 0)
 	{
 		cout << "Please input number divisible by .05: ";
 		cin >> cost;
+		cout << endl;
 
 		testInput = cost * 100;
 	}
 
 	cout << "Please enter the amount paid: ";
 	cin >> payment;
+	cout << endl;
 
 	testInput = payment * 100;
 
@@ -42,8 +52,9 @@ int main()
 	{
 		cout << "Please input number divisible by .05: ";
 		cin >> payment;
+		cout << endl;
 
-		testInput = cost * 100;
+		testInput = payment * 100;
 	}
 
 	change = payment - cost;
@@ -62,9 +73,40 @@ int main()
 
 	cout << "Item Price - $" << cost << endl;
 	cout << "Amount Paid - $" << payment << endl;
-	cout << "Change Due - $" << change << endl;
+	cout << "Change Due - $" << change << endl << endl;
 
 	cout << "Your Change: " << endl;
+
+	if (change == 0)
+		cout << "No change." << endl;
+
+	if (change >= 1)
+	{
+		amtDollars = change / dollar;
+		change = change -(dollar * amtDollars);
+		cout << "Dollars - " << amtDollars << endl;
+	}
+
+	if (change >= .25)
+	{
+		amtQuarters = change / quarter;
+		change = change - (quarter * amtQuarters);
+		cout << "Quarters - " << amtQuarters << endl;
+	}
+
+	if (change >= .1)
+	{
+		amtDimes = change / dime;
+		change = change - (dime * amtDimes);
+		cout << "Dimes - " << amtDimes << endl;
+	}
+
+	if (change >= .05)
+	{
+		amtNickels = change / nickel;
+		change = change - (nickel * amtNickels);
+		cout << "Nickles - " << amtNickels << endl;
+	}
 
 	return 0;
 }
