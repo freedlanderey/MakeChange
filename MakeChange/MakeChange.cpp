@@ -22,16 +22,20 @@ const float quarter = 0.25f;
 const float dime = 0.10f;
 const float nickel = .05f;
 
+bool answer;
+
 int main()
 {
 		cout << "Please enter the cost of the product: ";
 		cin >> cost;
 		cout << endl;
 
+		start:
+
 		testInput = round(cost * 100);
 
 		//Testing my testInput
-		cout << "Test input: " << testInput << endl;
+		//cout << "Test input: " << testInput << endl;
 
 		while (testInput % 5 != 0)
 		{
@@ -67,10 +71,10 @@ int main()
 			cout << "Please enter additional amount: ";
 			cin >> addChange;
 
-			change += addChange;
+			change += round(addChange);
 		}
 
-		payment += addChange;
+		payment += round(addChange);
 
 		cout << "Item Price - $" << cost << endl;
 		cout << "Amount Paid - $" << payment << endl;
@@ -83,31 +87,47 @@ int main()
 
 		if (change >= 1)
 		{
-			amtDollars = change / dollar;
-			change = change - (dollar * amtDollars);
+			amtDollars = round(change / dollar);
+			change = round(change - (dollar * amtDollars));
 			cout << "Dollars - " << amtDollars << endl;
 		}
 
 		if (change >= .25)
 		{
-			amtQuarters = change / quarter;
-			change = change - (quarter * amtQuarters);
+			amtQuarters = round(change / quarter);
+			change = round(change - (quarter * amtQuarters));
 			cout << "Quarters - " << amtQuarters << endl;
 		}
 
 		if (change >= .1)
 		{
-			amtDimes = change / dime;
-			change = change - (dime * amtDimes);
+			amtDimes = round(change / dime);
+			change = round(change - (dime * amtDimes));
 			cout << "Dimes - " << amtDimes << endl;
 		}
 
 		if (change >= .05)
 		{
-			amtNickels = change / nickel;
-			change = change - (nickel * amtNickels);
+			amtNickels = round(change / nickel);
+			change = round(change - (nickel * amtNickels));
 			cout << "Nickels - " << amtNickels << endl;
 		}
+
+		cout << endl;
+		cout << "Next item:	" << endl;
+		cout << "Please enter the cost of the item (enter 0 to exit): ";
+		cin >> cost;
+		cout << endl;
+
+		if (cost != 0)
+		{
+			goto start;
+		}
+		else
+		{
+
+		}
+
 		return 0;
 	
 }
