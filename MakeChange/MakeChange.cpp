@@ -34,9 +34,6 @@ int main()
 
 		testInput = round(cost * 100);
 
-		//Testing my testInput
-		//cout << "Test input: " << testInput << endl;
-
 		while (testInput % 5 != 0)
 		{
 			cout << "Please input number divisible by .05: ";
@@ -71,10 +68,21 @@ int main()
 			cout << "Please enter additional amount: ";
 			cin >> addChange;
 
-			change += round(addChange);
+			testInput = round(addChange * 100);
+
+			while (testInput % 5 != 0)
+			{
+				cout << "Please input number divisible by .05: ";
+				cin >> addChange;
+				cout << endl;
+
+				testInput = round(addChange * 100);
+			}
+
+			change += addChange;
 		}
 
-		payment += round(addChange);
+		payment += addChange;
 
 		cout << "Item Price - $" << cost << endl;
 		cout << "Amount Paid - $" << payment << endl;
@@ -87,22 +95,22 @@ int main()
 
 		if (change >= 1)
 		{
-			amtDollars = round(change / dollar);
-			change = round(change - (dollar * amtDollars));
+			amtDollars = change / dollar;
+			change = change - (dollar * amtDollars);
 			cout << "Dollars - " << amtDollars << endl;
 		}
 
 		if (change >= .25)
 		{
-			amtQuarters = round(change / quarter);
-			change = round(change - (quarter * amtQuarters));
+			amtQuarters = change / quarter;
+			change = change - (quarter * amtQuarters);
 			cout << "Quarters - " << amtQuarters << endl;
 		}
 
 		if (change >= .1)
 		{
-			amtDimes = round(change / dime);
-			change = round(change - (dime * amtDimes));
+			amtDimes = change / dime;
+			change = change - (dime * amtDimes);
 			cout << "Dimes - " << amtDimes << endl;
 		}
 
